@@ -27,7 +27,7 @@ export default function Home() {
         </>
       );
     }
-    
+
     if (activeTab === 'active_cases') {
       const activeCases = cases.filter(c => c.status !== 'closed');
       return (
@@ -120,7 +120,7 @@ export default function Home() {
           <span>Balance of Justice</span>
         </div>
         <nav className="sidebar-nav">
-          <button 
+          <button
             className={`nav-item ${activeTab === 'dashboard' ? 'active' : ''}`}
             onClick={() => setActiveTab('dashboard')}
             style={{ width: '100%', textAlign: 'left', background: 'transparent', border: 'none', cursor: 'pointer' }}
@@ -128,7 +128,7 @@ export default function Home() {
             <Database size={20} />
             <span>Dashboard</span>
           </button>
-          <button 
+          <button
             className={`nav-item ${activeTab === 'active_cases' ? 'active' : ''}`}
             onClick={() => setActiveTab('active_cases')}
             style={{ width: '100%', textAlign: 'left', background: 'transparent', border: 'none', cursor: 'pointer' }}
@@ -136,7 +136,7 @@ export default function Home() {
             <FileText size={20} />
             <span>Active Cases</span>
           </button>
-          <button 
+          <button
             className={`nav-item ${activeTab === 'evidence_lock' ? 'active' : ''}`}
             onClick={() => setActiveTab('evidence_lock')}
             style={{ width: '100%', textAlign: 'left', background: 'transparent', border: 'none', cursor: 'pointer' }}
@@ -144,7 +144,7 @@ export default function Home() {
             <ShieldCheck size={20} />
             <span>Evidence Lock</span>
           </button>
-          <button 
+          <button
             className={`nav-item ${activeTab === 'hearings' ? 'active' : ''}`}
             onClick={() => setActiveTab('hearings')}
             style={{ width: '100%', textAlign: 'left', background: 'transparent', border: 'none', cursor: 'pointer' }}
@@ -160,15 +160,15 @@ export default function Home() {
         <header className="header">
           <div className="header-title">
             {role === 'judge' && 'Judge Dashboard'}
-            {role === 'hospital' && 'Justice Authority'}
+            {role === 'hospital' && 'Hospital Dashboard'}
             {role === 'lawyer' && 'Lawyer Dashboard'}
           </div>
           <div className="header-actions">
             <div className="wallet-badge">
               Connected: {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}
             </div>
-            <button 
-              className="btn-secondary" 
+            <button
+              className="btn-secondary"
               style={{ padding: '6px 12px', border: 'none' }}
               onClick={disconnectWallet}
               title="Disconnect"
