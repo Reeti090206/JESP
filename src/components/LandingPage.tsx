@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useCase, Role } from '@/context/CaseContext';
-import { Shield, UploadCloud, FileSignature, Lock, Scale, Clock } from 'lucide-react';
+import { Shield, UploadCloud, FileSignature, Lock, Scale, Clock, Gavel, Landmark, Stethoscope, ShieldCheck, History, Briefcase } from 'lucide-react';
 
 export default function LandingPage() {
   const { connectWallet } = useCase();
@@ -16,62 +16,87 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="landing-container">
-      <div style={{ marginBottom: '20px' }}>
-        <Scale size={80} color="var(--accent-gold)" />
+    <div className="landing-container fade-in">
+      <div className="landing-badge">
+        ENTERPRISE GRADE SECURITY // NODE 02.15
       </div>
-      <h1 className="landing-title">Secure Judicial Medical Evidence System</h1>
+      
+      <h1 className="landing-title">Justice <br/>Authority</h1>
       <p className="landing-subtitle">
-        Prevent medical evidence forgery in criminal and custody cases using cryptographic locking. 
-        Ensure immutable chain-of-custody from the hospital straight to the courtroom.
+        Secure Forensic Evidence Management System. <br/>
+        Unified cryptographic chain-of-custody for judicial and medical institutions.
       </p>
 
-      <div className="features-list">
-        <div className="feature-item">
-          <UploadCloud size={16} /> Hospital Verified Upload
-        </div>
-        <div className="feature-item">
-          <FileSignature size={16} /> Lawyer Auth Signature
-        </div>
-        <div className="feature-item">
-          <Lock size={16} /> Automatic Evidence Locking
-        </div>
-        <div className="feature-item">
-          <Clock size={16} /> Court Hearing Timer
-        </div>
-      </div>
+      {!showRoleSelect ? (
+        <>
+          <div className="features-list">
+            <div className="feature-item">
+              <Landmark size={24} /> 
+              <span>Judicial Oversight</span>
+            </div>
+            <div className="feature-item">
+              <ShieldCheck size={24} /> 
+              <span>Verified Repositories</span>
+            </div>
+            <div className="feature-item">
+              <Lock size={24} /> 
+              <span>Cryptographic Audits</span>
+            </div>
+            <div className="feature-item">
+              <History size={24} /> 
+              <span>Immutable History</span>
+            </div>
+          </div>
 
-      {showRoleSelect && (
-        <div className="role-selector">
-          <button 
-            className={`role-btn ${selectedRole === 'judge' ? 'active' : ''}`}
-            onClick={() => setSelectedRole('judge')}
-          >
-            Judge
+          <button className="btn-primary" onClick={handleConnect} style={{ padding: '16px 48px', fontWeight: 600 }}>
+            Establish Secure Access
           </button>
-          <button 
-            className={`role-btn ${selectedRole === 'hospital' ? 'active' : ''}`}
-            onClick={() => setSelectedRole('hospital')}
-          >
-            Hospital Authority
+        </>
+      ) : (
+        <div className="fade-in" style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div className="role-selector">
+            <button 
+              className={`role-btn ${selectedRole === 'judge' ? 'active' : ''}`}
+              onClick={() => setSelectedRole('judge')}
+            >
+              <Scale size={32} />
+              <span>JUDICIAL AUTHORITY</span>
+            </button>
+            <button 
+              className={`role-btn ${selectedRole === 'hospital' ? 'active' : ''}`}
+              onClick={() => setSelectedRole('hospital')}
+            >
+              <Stethoscope size={32} />
+              <span>MEDICAL OFFICIAL</span>
+            </button>
+            <button 
+              className={`role-btn ${selectedRole === 'lawyer' ? 'active' : ''}`}
+              onClick={() => setSelectedRole('lawyer')}
+            >
+              <Briefcase size={32} />
+              <span>LEGAL COUNSEL</span>
+            </button>
+          </div>
+
+          <button className="btn-primary" onClick={handleConnect} style={{ padding: '16px 48px', fontWeight: 600 }}>
+            Continue as {selectedRole?.toUpperCase()}
           </button>
+          
           <button 
-            className={`role-btn ${selectedRole === 'lawyer' ? 'active' : ''}`}
-            onClick={() => setSelectedRole('lawyer')}
+            className="text-muted" 
+            onClick={() => setShowRoleSelect(false)}
+            style={{ marginTop: '24px', fontSize: '0.85rem', background: 'none', border: 'none', color: 'var(--text-muted)', textDecoration: 'underline', cursor: 'pointer' }}
           >
-            Victim's Lawyer
+            Go Back
           </button>
         </div>
       )}
 
-      <button className="btn-primary" onClick={handleConnect} style={{ fontSize: '1.2rem', padding: '16px 32px' }}>
-        <Shield size={24} />
-        {showRoleSelect ? "Sign In with Wallet" : "Connect Wallet"}
-      </button>
-
-      <p style={{ marginTop: '24px', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-        Web3 Authentication using MetaMask
-      </p>
+      <footer style={{ marginTop: '80px', borderTop: 'var(--border-fine)', paddingTop: '32px', width: '100%', maxWidth: '800px' }}>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.75rem', letterSpacing: '0.05em', fontWeight: 500 }}>
+          CERTIFIED CRYPTOGRAPHIC PROTOCOL // ACCELERATED ADJUDICATION SYSTEM
+        </p>
+      </footer>
     </div>
   );
 }
