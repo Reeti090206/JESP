@@ -36,7 +36,7 @@ export default function Home() {
             <h2 className="section-title">Case Repository</h2>
             <p className="section-subtitle">Manage and track all ongoing judicial proceedings.</p>
           </div>
-          
+
           {activeCases.length === 0 ? (
             <div className="empty-state">
               <FileText size={48} />
@@ -141,7 +141,7 @@ export default function Home() {
                         <span style={{ fontSize: '1.25rem', fontWeight: 700 }}>{c.title}</span>
                         <div className="status-badge status-court">HEARING SCHEDULED</div>
                       </div>
-                      
+
                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
                         <div className="case-details">
                           <div className="detail-item">
@@ -153,7 +153,7 @@ export default function Home() {
                             <span className="value">{c.status.replace('_', ' ').toUpperCase()}</span>
                           </div>
                         </div>
-                        
+
                         <div style={{ padding: '16px', background: 'rgba(59, 130, 246, 0.05)', borderRadius: '8px', border: '1px solid rgba(59, 130, 246, 0.1)', display: 'flex', alignItems: 'center', gap: '16px' }}>
                           <Clock className="text-gold" size={32} />
                           <div>
